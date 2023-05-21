@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add a new reader</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:insert="../fragments/navbar.html :: navbar" th:with=" url='people' "></header>
+    <div class="container px-3 py-2">
+        <form th:action="@{/people}" th:method="POST" th:object="${person}" charset="UTF-8">
+            <label for="fullname" class="form-label"> Full name </label>
+            <input type="text" th:field="*{fullname}" id="fullname" minlength="2" maxlength="100" class="form-control">
+            <div th:if="${#fields.hasErrors('fullname')}" th:errors="*{fullname}"></div>
+
+            <label for="birth_year" class="form-label"> Birth year </label>
+            <input type="number" th:field="*{birth_year}" id="birth_year" min="1900" class="form-control">
+            <div th:if="${#fields.hasErrors('birth_year')}" th:errors="*{birth_year}"></div>
+
+            <button type="submit" class="btn btn-primary my-3 float-end">Create</button>
+        </form>
+    </div>
+</body>
+</html>

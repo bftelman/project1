@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item" th:classappend="${url=='home' ? 'active' : ''}">
+                <a th:href="@{/}" th:text="Home" class="nav-link"></a>
+            </li>
+            <li class="nav-item" th:classappend="${url=='books' ? 'active' : ''}">
+                <a th:href="@{/books}" th:text="Books" class="nav-link"></a>
+            </li>
+            <li class="nav-item" th:classappend="${url=='people' ? 'active' : ''}">
+                <a th:href="@{/people}" th:text="People" class="nav-link"></a>
+            </li>
+        </ul>
+    </nav>
+</html>
